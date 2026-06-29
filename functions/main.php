@@ -59,7 +59,7 @@ function apply_rtl_to_keyboard($keyboard)
 {
     $rtl = false;
 
-    if (current_language() == 'fa_IR') {
+    if (current_language() == 'fa_IR' || current_language() == 'ar_AR') {
         $rtl = true;
     }
 
@@ -357,16 +357,28 @@ function mainMenu()
         'user_id' => $tg->update_from,
     ]);
 
-    $keyboard = [];
+    $keyboard = [
+        [
+            ['text' => __("🔘 Inline Buttons"), 'callback_data' => 'menu_inlinekey'],
+            ['text' => __("🔗 Hyper"), 'callback_data' => 'menu_hyper'],
+            ['text' => __("📎 Attach"), 'callback_data' => 'menu_attach'],
+        ],
+        [
+            ['text' => __("📮 Send without Quotes"), 'callback_data' => 'menu_sendto'],
+            ['text' => __("🌐 اللغة"), 'callback_data' => 'menu_language'],
+        ],
+        [
+            ['text' => __("☎️ Contact Us"), 'callback_data' => 'menu_contact'],
+            ['text' => __("❔ Help"), 'callback_data' => 'menu_help'],
+        ],
+        [
+            ['text' => __("📂 Bot Source"), 'callback_data' => 'menu_source'],
+            ['text' => "⚙️ قناة الدعم", 'url' => SUPPORT_CHANNEL_URL],
+        ],
+    ];
 
-    $keyboard[] = [__("🔘 Inline Buttons"), __("🔗 Hyper"), __("📎 Attach")];
-    $keyboard[] = [__("📮 Send without Quotes"), "🌐 Lang / زبان"];
-    $keyboard[] = [__("☎️ Contact Us"), __("❔ Help"), __("📂 Bot Source")];
-
-    return $tg->replyKeyboardMarkup([
-        'keyboard' => apply_rtl_to_keyboard($keyboard),
-        'resize_keyboard' => true,
-        'one_time_keyboard' => true,
+    return $tg->inlineKeyboardMarkup([
+        'inline_keyboard' => apply_rtl_to_keyboard($keyboard),
     ]);
 }
 
