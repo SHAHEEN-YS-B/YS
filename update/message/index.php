@@ -36,7 +36,7 @@ if ($message['chat']['type'] == 'private') {
     if (
         !empty($message['text']) && in_array($message['text'], [
             __("🔘 Inline Buttons"), __("🔗 Hyper"), __("📎 Attach"),
-            __("📮 Send without Quotes"), "🌐 Lang / زبان",
+            __("📮 Send without Quotes"), __("🌐 اللغة"),
             __("☎️ Contact Us"), __("❔ Help"), __("📂 Bot Source"),
             "↩️ Cancel", __("↩️ Cancel"),
         ])
@@ -56,7 +56,7 @@ if ($message['chat']['type'] == 'private') {
             $message['text'] = '/attach';
         } elseif ($message['text'] == __("📮 Send without Quotes")) {
             $message['text'] = '/sendto';
-        } elseif ($message['text'] == "🌐 Lang / زبان") {
+        } elseif ($message['text'] == __("🌐 اللغة")) {
             $message['text'] = '/language';
         } elseif ($message['text'] == __("☎️ Contact Us")) {
             $message['text'] = '/contact';
@@ -106,7 +106,7 @@ if ($message['chat']['type'] == 'private') {
     $text = __("Your message was received by our bot 😉") . "\n\n" .
         __("🚩 Send <code>/inlinekey</code> in reply to your message to add a inline button.") . "\n" .
         __("🚩 Send <code>none</code> in reply to your message to anonymity.") . "\n";
-    if (!empty($message['video']) || !empty($message['animation']) || !empty($message['document']) || !empty($message['audio']) || !empty($message['photo']) || !empty($message['voice']) || !empty($message['sticker']) || !empty($message['video_note'])) {
+    if (!empty($message['video']) || !empty($message['animation']) || !empty($message['document']) || !empty($message['audio']) || !empty($message['photo']) || !empty($message['voice']) || !empty($message['sticker'])) {
         $text .= __("🚩 Send the text in reply to your message to change the caption.") . "\n";
         if (!empty($message['caption'])) {
             $text .= __("🚩 Send <code>null</code> in reply to your message to remove the caption.") . "\n";
