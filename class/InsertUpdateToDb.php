@@ -128,7 +128,7 @@ class InsertUpdateToDb
         if (empty($db_user)) {
             $p = [];
 
-            if (isset($chat['is_bot']) && $chat['is_bot'] == true) {
+            if (isset($user['is_bot']) && $user['is_bot'] == true) {
                 $p['is_bot'] = 1;
             }
 
