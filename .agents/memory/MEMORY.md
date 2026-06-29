@@ -1,0 +1,2 @@
+- [Shaheen bot MySQL setup](shaheen-mysql.md) — MySQL 8.0 runs via start.sh loop; socket at /tmp/mysql_shaheen.sock; schema import flagged by .schema_imported file.
+- [Arabic language integration](shaheen-arabic.md) — ar_AR added as default; Gregorian dates (not Jalali) for Arabic; RTL keyboard enabled for ar_AR.

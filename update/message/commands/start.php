@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /** @var MysqliDb $db */
 /** @var TelegramBot\Telegram $tg */
 /** @var array $message */
@@ -73,10 +73,13 @@ if (empty($user_settings)) {
     $language_code = DEFAULT_LANGUAGE;
 
     if (!empty($message['from']['language_code'])) {
-        if (strpos($message['from']['language_code'], "fa") === 0) {
+        $lang_prefix = strtolower(substr($message['from']['language_code'], 0, 2));
+        if ($lang_prefix === 'fa') {
             $language_code = 'fa_IR';
-        } elseif (strpos($message['from']['language_code'], "en") === 0) {
+        } elseif ($lang_prefix === 'en') {
             $language_code = 'en_US';
+        } elseif ($lang_prefix === 'ar') {
+            $language_code = 'ar_AR';
         }
     }
 
@@ -97,9 +100,17 @@ if ($message['text'][0] == '/') {
     $command = strtolower($words[0]);
     if ($command == '/start') {
         if ($words[1] == null || pos_in_array(all_command_list(), strtolower($words[1])) === false) {
+            // Send welcome GIF first
+            $tg->sendAnimation([
+                'chat_id' => $tg->update_from,
+                'animation' => 'https://i.postimg.cc/Mp6J1k1Q/Picsart-26-06-29-10-52-12-611-ezgif-com-video-to-gif-converter.gif',
+            ], ['send_error' => false]);
+
+            // Then send welcome message with menu
             $tg->sendMessage([
                 'chat_id' => $tg->update_from,
-                'text' => __("With this robot you can create messages containing a inline button, hyper text, add attachments to texts, post messages into your channel without quotes, and ...") . "\n\n" .
+                'text' => "🌟 <b>" . BOT_NAME . "</b>\n\n" .
+                    __("With this robot you can create messages containing a inline button, hyper text, add attachments to texts, post messages into your channel without quotes, and ...") . "\n\n" .
                     __("Choose an option from the menu below to get started."),
                 'reply_markup' => mainMenu(),
                 'disable_web_page_preview' => true,

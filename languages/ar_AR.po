@@ -1,0 +1,337 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: chToolsBot\n"
+"POT-Creation-Date: 2026-06-29 00:00+0300\n"
+"PO-Revision-Date: 2026-06-29 00:00+0300\n"
+"Last-Translator: SHAHEEN | YS\n"
+"Language-Team: Arabic\n"
+"Language: ar_AR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Generator: Manual\n"
+
+msgid "Status of forward above message to robot users:"
+msgstr "حالة إعادة توجيه الرسالة أعلاه إلى مستخدمي الروبوت:"
+
+msgid "Number of requests left:"
+msgstr "عدد الطلبات المتبقية:"
+
+msgid "Number of submitted requests:"
+msgstr "عدد الطلبات المُرسلة:"
+
+msgid "Number of successful requests:"
+msgstr "عدد الطلبات الناجحة:"
+
+msgid "Number of unsuccessful requests:"
+msgstr "عدد الطلبات الفاشلة:"
+
+msgid "Status:"
+msgstr "الحالة:"
+
+msgid "Finished"
+msgstr "انتهى"
+
+msgid "Sending ..."
+msgstr "جارٍ الإرسال ..."
+
+msgid "With this robot you can create messages containing a inline button, hyper text, add attachments to texts, post messages into your channel without quotes, and ..."
+msgstr "بهذا البوت يمكنك إنشاء رسائل تحتوي على أزرار مضمنة، نصوص مرتبطة، إضافة مرفقات للنصوص، نشر رسائل في قناتك بدون اقتباس، والمزيد..."
+
+msgid "Choose an option from the menu below to get started."
+msgstr "اختر خياراً من القائمة أدناه للبدء."
+
+msgid "🔘 Inline Buttons"
+msgstr "🔘 أزرار مضمنة"
+
+msgid "🔗 Hyper"
+msgstr "🔗 رابط مخفي"
+
+msgid "📎 Attach"
+msgstr "📎 مرفق"
+
+msgid "📮 Send without Quotes"
+msgstr "📮 إرسال بدون اقتباس"
+
+msgid "☎️ Contact Us"
+msgstr "☎️ تواصل معنا"
+
+msgid "❔ Help"
+msgstr "❔ مساعدة"
+
+msgid "📂 Bot Source"
+msgstr "📂 مصدر البوت"
+
+msgid "Unspecified error occurred. Please try again."
+msgstr "حدث خطأ غير محدد. يرجى المحاولة مرة أخرى."
+
+msgid "User with ID %s became a member of the robot!"
+msgstr "المستخدم بالمعرف %s انضم إلى البوت!"
+
+msgid "Referred by user with ID %s"
+msgstr "تمت الإحالة من المستخدم بالمعرف %s"
+
+msgid "‼️ Send /cancel to cancel operation."
+msgstr "‼️ أرسل /cancel لإلغاء العملية."
+
+msgid "seconds"
+msgstr "ثانية"
+
+msgid "minutes"
+msgstr "دقيقة"
+
+msgid "hours"
+msgstr "ساعة"
+
+msgid "days"
+msgstr "يوم"
+
+msgid "months"
+msgstr "شهر"
+
+msgid "ago"
+msgstr "مضت"
+
+msgid "later"
+msgstr "لاحقاً"
+
+msgid "Tools 🔧"
+msgstr "أدوات 🔧"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "❌ Cancel"
+msgstr "❌ إلغاء"
+
+msgid "✅ Done"
+msgstr "✅ تم"
+
+msgid "Back"
+msgstr "رجوع"
+
+msgid "⬅️ Back"
+msgstr "⬅️ رجوع"
+
+msgid "Next ➡️"
+msgstr "التالي ➡️"
+
+msgid "Help"
+msgstr "مساعدة"
+
+msgid "Invalid input. Please try again."
+msgstr "إدخال غير صالح. يرجى المحاولة مرة أخرى."
+
+msgid "Operation cancelled."
+msgstr "تم إلغاء العملية."
+
+msgid "✅ Sent successfully!"
+msgstr "✅ تم الإرسال بنجاح!"
+
+msgid "❌ Failed to send."
+msgstr "❌ فشل الإرسال."
+
+msgid "Send the message you want to add inline buttons to it:"
+msgstr "أرسل الرسالة التي تريد إضافة أزرار مضمنة إليها:"
+
+msgid "Now send the inline keyboard in the following format:"
+msgstr "الآن أرسل لوحة المفاتيح المضمنة بالتنسيق التالي:"
+
+msgid "Send the text you want to create a hyper link for:"
+msgstr "أرسل النص الذي تريد إنشاء رابط مخفي له:"
+
+msgid "Send the URL:"
+msgstr "أرسل الرابط:"
+
+msgid "Send the message you want to attach a file to:"
+msgstr "أرسل الرسالة التي تريد إرفاق ملف بها:"
+
+msgid "Now send the file you want to attach:"
+msgstr "الآن أرسل الملف الذي تريد إرفاقه:"
+
+msgid "Send the message you want to post without quotes:"
+msgstr "أرسل الرسالة التي تريد نشرها بدون اقتباس:"
+
+msgid "Select your channel:"
+msgstr "اختر قناتك:"
+
+msgid "No channels found. Please add a channel first."
+msgstr "لا توجد قنوات. يرجى إضافة قناة أولاً."
+
+msgid "✅ Message sent to the channel successfully!"
+msgstr "✅ تم إرسال الرسالة إلى القناة بنجاح!"
+
+msgid "Language changed successfully!"
+msgstr "تم تغيير اللغة بنجاح!"
+
+msgid "Select your language:"
+msgstr "اختر لغتك:"
+
+msgid "You are not an admin."
+msgstr "أنت لست مسؤولاً."
+
+msgid "Admin commands:"
+msgstr "أوامر المسؤول:"
+
+msgid "User not found."
+msgstr "المستخدم غير موجود."
+
+msgid "Message sent successfully to %s users."
+msgstr "تم إرسال الرسالة بنجاح إلى %s مستخدم."
+
+msgid "Send the message to forward to all users:"
+msgstr "أرسل الرسالة لإعادة توجيهها إلى جميع المستخدمين:"
+
+msgid "Are you sure you want to send this message to all %s users?"
+msgstr "هل أنت متأكد من إرسال هذه الرسالة إلى جميع المستخدمين البالغ عددهم %s؟"
+
+msgid "✅ Yes"
+msgstr "✅ نعم"
+
+msgid "❌ No"
+msgstr "❌ لا"
+
+msgid "Forward request submitted. Processing..."
+msgstr "تم تقديم طلب الإعادة. جارٍ المعالجة..."
+
+msgid "Statistics:"
+msgstr "الإحصائيات:"
+
+msgid "Total users:"
+msgstr "إجمالي المستخدمين:"
+
+msgid "New users today:"
+msgstr "مستخدمون جدد اليوم:"
+
+msgid "New users this week:"
+msgstr "مستخدمون جدد هذا الأسبوع:"
+
+msgid "New users this month:"
+msgstr "مستخدمون جدد هذا الشهر:"
+
+msgid "Contact Us"
+msgstr "تواصل معنا"
+
+msgid "Send your message and we will reply as soon as possible:"
+msgstr "أرسل رسالتك وسنرد في أقرب وقت ممكن:"
+
+msgid "✅ Your message has been sent to the admins."
+msgstr "✅ تم إرسال رسالتك إلى المسؤولين."
+
+msgid "Reply from admin:"
+msgstr "رد المسؤول:"
+
+msgid "Photo"
+msgstr "صورة"
+
+msgid "Document"
+msgstr "مستند"
+
+msgid "Animation"
+msgstr "صور متحركة"
+
+msgid "Video"
+msgstr "فيديو"
+
+msgid "Video Note"
+msgstr "ملاحظة فيديو"
+
+msgid "Voice"
+msgstr "صوت"
+
+msgid "Audio"
+msgstr "صوت"
+
+msgid "Sticker"
+msgstr "ملصق"
+
+msgid "URL"
+msgstr "رابط"
+
+msgid "Text"
+msgstr "نص"
+
+msgid "Invalid URL. Please enter a valid URL."
+msgstr "رابط غير صالح. يرجى إدخال رابط صحيح."
+
+msgid "The bot source code is available on GitHub:"
+msgstr "كود المصدر للبوت متاح على GitHub:"
+
+msgid "You must join the following channels to use this bot:"
+msgstr "يجب عليك الانضمام إلى القنوات التالية لاستخدام هذا البوت:"
+
+msgid "✅ I joined"
+msgstr "✅ انضممت"
+
+msgid "You haven't joined all the required channels yet."
+msgstr "لم تنضم بعد إلى جميع القنوات المطلوبة."
+
+msgid "Settings"
+msgstr "الإعدادات"
+
+msgid "Notifications:"
+msgstr "الإشعارات:"
+
+msgid "On"
+msgstr "مفعل"
+
+msgid "Off"
+msgstr "معطل"
+
+msgid "Protect content:"
+msgstr "حماية المحتوى:"
+
+msgid "Send to channel"
+msgstr "إرسال إلى القناة"
+
+msgid "Add channel"
+msgstr "إضافة قناة"
+
+msgid "Remove channel"
+msgstr "إزالة القناة"
+
+msgid "Send me the username of the channel (with @) or the channel ID:"
+msgstr "أرسل لي اسم مستخدم القناة (مع @) أو معرف القناة:"
+
+msgid "Bot is not a member of this channel or doesn't have enough permissions."
+msgstr "البوت ليس عضواً في هذه القناة أو ليس لديه صلاحيات كافية."
+
+msgid "Channel added successfully!"
+msgstr "تمت إضافة القناة بنجاح!"
+
+msgid "Channel removed successfully!"
+msgstr "تمت إزالة القناة بنجاح!"
+
+msgid "Your channels:"
+msgstr "قنواتك:"
+
+msgid "No channel selected."
+msgstr "لم يتم اختيار قناة."
+
+msgid "Inline keyboard sent to the channel!"
+msgstr "تم إرسال لوحة المفاتيح المضمنة إلى القناة!"
+
+msgid "Send the caption (or send - to skip):"
+msgstr "أرسل التسمية التوضيحية (أو أرسل - للتخطي):"
+
+msgid "Send the message (or send - to skip):"
+msgstr "أرسل الرسالة (أو أرسل - للتخطي):"
+
+msgid "Unknown command."
+msgstr "أمر غير معروف."
+
+msgid "This feature is under development."
+msgstr "هذه الميزة قيد التطوير."
+
+msgid "Error:"
+msgstr "خطأ:"
+
+msgid "Please wait..."
+msgstr "يرجى الانتظار..."
+
+msgid "Done!"
+msgstr "تم!"
+
+msgid "The message has been sent."
+msgstr "تم إرسال الرسالة."

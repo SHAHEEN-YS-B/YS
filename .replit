@@ -4,3 +4,40 @@ expertMode = true
 
 [nix]
 channel = "stable-25_05"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start application"
+
+[[workflows.workflow]]
+name = "Start application"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "bash /home/runner/workspace/start.sh"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[userenv]
+
+[userenv.shared]
+BOT_USERNAME = "YShaheen"
+DB_HOST = "127.0.0.1"
+DB_NAME = "shaheen_bot"
+DB_USER = "shaheen"
+MAIN_LINK = "https://fc4dad64-71ba-46d2-b1b4-2772638d2e2c-00-1lihs6440mkjm.sisko.replit.dev"
