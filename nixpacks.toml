@@ -1,0 +1,20 @@
+# Railway build configuration (nixpacks)
+# Tells Railway to use PHP 8.2 + MySQL client + Composer
+
+[phases.setup]
+nixPkgs = [
+    "php82",
+    "php82Packages.composer",
+    "mysql80",
+]
+
+[phases.install]
+cmds = [
+    "composer install --no-dev --optimize-autoloader --no-interaction",
+    "composer dump-autoload --optimize",
+    "mkdir -p logs files/temp",
+    "chmod -R 775 logs files/temp",
+]
+
+[start]
+cmd = "bash start.sh"

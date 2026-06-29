@@ -1,67 +1,90 @@
 <?php
 date_default_timezone_set('UTC');
 
-// Database configuration — read from environment, fallback to defaults
-const DB_HOST = "127.0.0.1";
-const DB_USER = "shaheen";
-const DB_PASSWORD = "shaheen_pass_2026";
-const DB_NAME = "shaheen_bot";
+// ---------------------------------------------------------------------------
+// Database — reads Railway env vars first, then Replit-local fallbacks
+// ---------------------------------------------------------------------------
+define('DB_HOST',     getenv('MYSQLHOST')     ?: getenv('DB_HOST')     ?: '127.0.0.1');
+define('DB_PORT',     (int)(getenv('MYSQLPORT') ?: getenv('DB_PORT') ?: 3306));
+define('DB_USER',     getenv('MYSQLUSER')     ?: getenv('DB_USER')     ?: 'shaheen');
+define('DB_PASSWORD', getenv('MYSQLPASSWORD') ?: getenv('DB_PASSWORD') ?: 'shaheen_pass_2026');
+define('DB_NAME',     getenv('MYSQLDATABASE') ?: getenv('DB_NAME')     ?: 'shaheen_bot');
 
-const DB_TABLE_PREFIX = "tbl_";
-const DB_CHARSET = 'utf8mb4_general_ci';
+define('DB_TABLE_PREFIX', 'tbl_');
+define('DB_CHARSET',      'utf8mb4_general_ci');
 
-// Main site URL (points to this Replit domain)
-const MAIN_LINK = "https://fc4dad64-71ba-46d2-b1b4-2772638d2e2c-00-1lihs6440mkjm.sisko.replit.dev";
+// ---------------------------------------------------------------------------
+// Public URL — Railway → Replit → localhost fallback
+// ---------------------------------------------------------------------------
+$_domain = getenv('RAILWAY_PUBLIC_DOMAIN')
+         ?: getenv('REPLIT_DEV_DOMAIN')
+         ?: ('localhost:' . (getenv('PORT') ?: '5000'));
+define('MAIN_LINK', 'https://' . rtrim($_domain, '/'));
+unset($_domain);
 
-// Bot token — stored here for runtime; rotate via BotFather if exposed
-const TOKEN = '8446137046:AAFfhP-O652Awf5OCmG1K6nQS7AehYLZ9BI';
+// ---------------------------------------------------------------------------
+// Bot credentials
+// ---------------------------------------------------------------------------
+define('TOKEN',        getenv('BOT_TOKEN')       ?: '8446137046:AAFfhP-O652Awf5OCmG1K6nQS7AehYLZ9BI');
+define('BOT_USERNAME', getenv('BOT_USERNAME_ENV') ?: 'YShaheen');
+define('BOT_NAME',     '𝚂𝙷𝙰𝙷𝙴𝙴𝙽 | 𝚈𝚂 𖠌');
 
-// Bot identity
-const BOT_USERNAME = "YShaheen";
-const BOT_NAME = "𝚂𝙷𝙰𝙷𝙴𝙴𝙽 | 𝚈𝚂 𖠌";
+// ---------------------------------------------------------------------------
+// Attachment channel (without @)
+// ---------------------------------------------------------------------------
+define('ATTACH_CHANNEL',      'YShaheen');
 
-// Attachment channel username (without @)
-const ATTACH_CHANNEL = 'YShaheen';
-
+// ---------------------------------------------------------------------------
 // IMGBB integration (disabled)
-const ATTACH_IMGBB_STATE = false;
-const ATTACH_IMGBB_API_KEY = '';
+// ---------------------------------------------------------------------------
+define('ATTACH_IMGBB_STATE',   false);
+define('ATTACH_IMGBB_API_KEY', '');
 
-// Error reporting chat ID (null = disabled)
-const TG_ERROR_REPORTING_CHAT_ID = null;
+// ---------------------------------------------------------------------------
+// Error-reporting chat (null = disabled)
+// ---------------------------------------------------------------------------
+define('TG_ERROR_REPORTING_CHAT_ID', null);
 
+// ---------------------------------------------------------------------------
 // Sponsor channels (disabled)
-const SPONSOR_CHANNEL_ENABLE = false;
-const SPONSOR_CHANNELS = [];
+// ---------------------------------------------------------------------------
+define('SPONSOR_CHANNEL_ENABLE', false);
+define('SPONSOR_CHANNELS',       []);
 
-// Language settings — Arabic as default
-const DEFAULT_LANGUAGE = 'ar_AR';
-const LANGUAGES = [
+// ---------------------------------------------------------------------------
+// Languages — Arabic default
+// ---------------------------------------------------------------------------
+define('DEFAULT_LANGUAGE', 'ar_AR');
+define('LANGUAGES', [
     'ar_AR' => [
-        'code' => 'ar_AR',
-        'name' => "🇸🇦 العربية",
+        'code'     => 'ar_AR',
+        'name'     => "🇸🇦 العربية",
         'timezone' => 'Asia/Riyadh',
     ],
     'en_US' => [
-        'code' => 'en_US',
-        'name' => "🇬🇧 English",
+        'code'     => 'en_US',
+        'name'     => "🇬🇧 English",
         'timezone' => 'UTC',
     ],
     'fa_IR' => [
-        'code' => 'fa_IR',
-        'name' => "🇮🇷 فارسی",
+        'code'     => 'fa_IR',
+        'name'     => "🇮🇷 فارسی",
         'timezone' => 'Asia/Tehran',
     ],
-];
+]);
 
+// ---------------------------------------------------------------------------
 // Welcome banner per language
-const BANNER_LINK = [
-    'ar_AR' => "https://i.postimg.cc/Mp6J1k1Q/Picsart-26-06-29-10-52-12-611-ezgif-com-video-to-gif-converter.gif",
-    'en_US' => MAIN_LINK . "/img/banner-en.jpg",
-    'fa_IR' => MAIN_LINK . "/img/banner-fa.jpg",
-];
+// ---------------------------------------------------------------------------
+define('BANNER_LINK', [
+    'ar_AR' => 'https://i.postimg.cc/Mp6J1k1Q/Picsart-26-06-29-10-52-12-611-ezgif-com-video-to-gif-converter.gif',
+    'en_US' => MAIN_LINK . '/img/banner-en.jpg',
+    'fa_IR' => MAIN_LINK . '/img/banner-fa.jpg',
+]);
 
-// Internal constants — do not change
-const TEMP_FILES_DIR_PATH_PREFIX = 'files/temp';
-const TEMP_FILES_DIR_FULL_PATH = __DIR__ . '/' . TEMP_FILES_DIR_PATH_PREFIX;
-const TEMP_FILES_DIR_URL = MAIN_LINK . '/' . TEMP_FILES_DIR_PATH_PREFIX;
+// ---------------------------------------------------------------------------
+// Internal paths — do not change
+// ---------------------------------------------------------------------------
+define('TEMP_FILES_DIR_PATH_PREFIX', 'files/temp');
+define('TEMP_FILES_DIR_FULL_PATH',   __DIR__ . '/' . TEMP_FILES_DIR_PATH_PREFIX);
+define('TEMP_FILES_DIR_URL',         MAIN_LINK . '/' . TEMP_FILES_DIR_PATH_PREFIX);

@@ -1,0 +1,18 @@
+# Dependencies
+/vendor/
+/.composer/
+
+# Logs — keep directory, ignore content
+/logs/*.log
+/logs/*.txt
+!/logs/.gitkeep
+
+# Temp upload files
+/files/temp/*
+!/files/temp/.gitkeep
+
+# Runtime / OS
+*.DS_Store
+Thumbs.db
+.env
+.env.local

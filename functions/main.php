@@ -4,13 +4,14 @@ use Morilog\Jalali\CalendarUtils;
 
 function get_db(): MysqliDb
 {
-    return new MysqliDb ([
-        'host' => DB_HOST,
+    return new MysqliDb([
+        'host'     => DB_HOST,
+        'port'     => DB_PORT,
         'username' => DB_USER,
         'password' => DB_PASSWORD,
-        'db' => DB_NAME,
-        'prefix' => DB_TABLE_PREFIX,
-        'charset' => DB_CHARSET,
+        'db'       => DB_NAME,
+        'prefix'   => DB_TABLE_PREFIX,
+        'charset'  => DB_CHARSET,
     ]);
 }
 
