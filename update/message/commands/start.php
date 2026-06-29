@@ -99,7 +99,7 @@ if ($message['text'][0] == '/') {
     $words = explode(' ', $message['text']);
     $command = strtolower($words[0]);
     if ($command == '/start') {
-        if ($words[1] == null || pos_in_array(all_command_list(), strtolower($words[1])) === false) {
+        if (!isset($words[1]) || $words[1] === '' || pos_in_array(all_command_list(), strtolower($words[1])) === false) {
             // Send welcome GIF first
             $tg->sendAnimation([
                 'chat_id' => $tg->update_from,
