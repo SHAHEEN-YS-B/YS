@@ -27,13 +27,13 @@ unset($_domain);
 // Bot credentials
 // ---------------------------------------------------------------------------
 define('TOKEN',        getenv('BOT_TOKEN')       ?: '8446137046:AAFfhP-O652Awf5OCmG1K6nQS7AehYLZ9BI');
-define('BOT_USERNAME', getenv('BOT_USERNAME_ENV') ?: 'YShaheen');
+define('BOT_USERNAME', '@shaheen_ys_bot');
 define('BOT_NAME',     '𝚂𝙷𝙰𝙷𝙴𝙴𝙽 | 𝚈𝚂 𖠌');
 
 // ---------------------------------------------------------------------------
 // Attachment channel (without @)
 // ---------------------------------------------------------------------------
-define('ATTACH_CHANNEL',      'YShaheen');
+define('ATTACH_CHANNEL',      'shaheen_ys');
 
 // ---------------------------------------------------------------------------
 // IMGBB integration (disabled)
@@ -82,6 +82,11 @@ define('BANNER_LINK', [
     'en_US' => MAIN_LINK . '/img/banner-en.jpg',
     'fa_IR' => MAIN_LINK . '/img/banner-fa.jpg',
 ]);
+
+// ---------------------------------------------------------------------------
+// Support channel
+// ---------------------------------------------------------------------------
+define('SUPPORT_CHANNEL_URL', 'https://t.me/shaheen_ys');
 
 // ---------------------------------------------------------------------------
 // Internal paths — do not change
