@@ -11,7 +11,8 @@ define('DB_PASSWORD', getenv('MYSQLPASSWORD') ?: getenv('DB_PASSWORD') ?: 'shahe
 define('DB_NAME',     getenv('MYSQLDATABASE') ?: getenv('DB_NAME')     ?: 'shaheen_bot');
 
 define('DB_TABLE_PREFIX', 'tbl_');
-define('DB_CHARSET',      'utf8mb4_general_ci');
+define('DB_CHARSET',      'utf8mb4');        // charset only — NOT collation
+define('DB_COLLATION',    'utf8mb4_general_ci'); // used in CREATE TABLE, not in mysqli::set_charset
 
 // ---------------------------------------------------------------------------
 // Public URL — Railway → Replit → localhost fallback

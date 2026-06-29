@@ -67,7 +67,10 @@ try {
         exit;
     }
 
-    set_language_by_user_id($tg->update_from);
+    // Only load user language when we have a sender ID
+    if (!empty($tg->update_from)) {
+        set_language_by_user_id($tg->update_from);
+    }
 
     // ----- 4. Route by update type -------------------------
     if (!empty($update['message'])) {
