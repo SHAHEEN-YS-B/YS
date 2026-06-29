@@ -1,2 +1,3 @@
-- [Shaheen bot MySQL setup](shaheen-mysql.md) — MySQL 8.0 runs via start.sh loop; socket at /tmp/mysql_shaheen.sock; schema import flagged by .schema_imported file.
+- [Shaheen bot MySQL setup](shaheen-mysql.md) — MySQL 8.0 runs via start.sh loop; auto-init if datadir missing; schema import flagged by .schema_imported file.
 - [Arabic language integration](shaheen-arabic.md) — ar_AR added as default; Gregorian dates (not Jalali) for Arabic; RTL keyboard enabled for ar_AR.
+- [Railway deployment fixes](shaheen-railway.md) — config.php uses define()+getenv() for Railway env vars; webhook always returns 200 OK; nixpacks.toml added.
