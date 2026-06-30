@@ -189,20 +189,22 @@ if [ ! -f "$APP_DIR/vendor/autoload.php" ]; then
 fi
 
 # ============================================================
-# Register Telegram webhook (skip if domain is localhost)
+# Register Telegram webhook — Railway only
+# Replit is development-only: webhook stays on Railway
 # ============================================================
-if [ "$PUBLIC_DOMAIN" != "localhost:${PORT}" ]; then
-    echo "[START] Registering Telegram webhook..."
+if [ "$IS_RAILWAY" = "true" ]; then
+    echo "[START] Registering Telegram webhook on Railway..."
     WEBHOOK_URL="https://${PUBLIC_DOMAIN}/webhook.php?token=${BOT_TOKEN}"
     RESULT=$(curl -s \
         "https://api.telegram.org/bot${BOT_TOKEN}/setWebhook" \
         --data-urlencode "url=${WEBHOOK_URL}" \
         -d "max_connections=40" \
         -d "drop_pending_updates=true" \
-        --data-urlencode "secret_token=${WEBHOOK_SECRET}" \
         2>/dev/null || echo '{"ok":false,"description":"curl failed"}')
     echo "$RESULT" | grep -o '"ok":[^,}]*\|"description":"[^"]*"' | tr '\n' ' '
     echo ""
+elif [ "$IS_REPLIT" = "true" ]; then
+    echo "[START] Replit dev mode — webhook registration skipped (Railway owns the webhook)."
 else
     echo "[START] Skipping webhook registration (no public domain)."
 fi
