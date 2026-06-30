@@ -1,6 +1,7 @@
-modules = ["php-8.2"]
+modules = ["php-8.2", "bash", "nix"]
 [agent]
 expertMode = true
+stack = "BEST_EFFORT_FALLBACK"
 
 [nix]
 channel = "stable-25_05"
