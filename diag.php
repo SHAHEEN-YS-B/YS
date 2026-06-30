@@ -1,44 +1,65 @@
 <?php
-// Temporary diagnostic page — will be removed after debugging
 header('Content-Type: text/plain; charset=utf-8');
-
-// Simple token check
 $secret = getenv('BOT_TOKEN') ?: '8446137046:AAFfhP-O652Awf5OCmG1K6nQS7AehYLZ9BI';
-if (($_GET['k'] ?? '') !== substr($secret, -10)) {
-    http_response_code(403);
-    exit("forbidden\n");
-}
+if (($_GET['k'] ?? '') !== substr($secret, -10)) { http_response_code(403); exit("forbidden\n"); }
 
-echo "=== Railway Diagnostic ===\n\n";
-echo "MYSQLHOST: "    . (getenv('MYSQLHOST')     ?: '(not set)') . "\n";
-echo "MYSQLPORT: "    . (getenv('MYSQLPORT')     ?: '(not set)') . "\n";
-echo "MYSQLUSER: "    . (getenv('MYSQLUSER')     ?: '(not set)') . "\n";
-echo "MYSQLDATABASE: ". (getenv('MYSQLDATABASE') ?: '(not set)') . "\n";
-echo "DB_HOST: "      . (getenv('DB_HOST')       ?: '(not set)') . "\n";
-echo "DB_NAME: "      . (getenv('DB_NAME')       ?: '(not set)') . "\n";
-echo "RAILWAY_PUBLIC_DOMAIN: " . (getenv('RAILWAY_PUBLIC_DOMAIN') ?: '(not set)') . "\n\n";
+echo "=== Railway Diagnostic ===\n";
+echo "php: " . phpversion() . "\n";
+echo "mysqli_ext: " . (extension_loaded('mysqli') ? 'YES' : 'NO') . "\n";
+echo "pdo_mysql: "  . (extension_loaded('pdo_mysql')  ? 'YES' : 'NO') . "\n";
+echo "pdo: "        . (extension_loaded('pdo')         ? 'YES' : 'NO') . "\n";
+echo "curl: "       . (extension_loaded('curl')         ? 'YES' : 'NO') . "\n\n";
 
 $host = getenv('MYSQLHOST')     ?: getenv('DB_HOST')     ?: '127.0.0.1';
 $port = (int)(getenv('MYSQLPORT') ?: getenv('DB_PORT') ?: 3306);
-$user = getenv('MYSQLUSER')     ?: getenv('DB_USER')     ?: 'shaheen';
+$user = getenv('MYSQLUSER')     ?: getenv('DB_USER')     ?: 'root';
 $pass = getenv('MYSQLPASSWORD') ?: getenv('DB_PASSWORD') ?: '';
-$name = getenv('MYSQLDATABASE') ?: getenv('DB_NAME')     ?: 'shaheen_bot';
+$name = getenv('MYSQLDATABASE') ?: getenv('DB_NAME')     ?: 'railway';
 
-echo "Connecting → $host:$port / $name as $user\n";
-$db = @new mysqli($host, $user, $pass, $name, $port);
-if ($db->connect_error) {
-    echo "DB ERROR: " . $db->connect_error . "\n";
+echo "MYSQLHOST: $host | PORT: $port | USER: $user | DB: $name\n\n";
+
+// Test 1: TCP reachability (socket connect with 5s timeout)
+echo "TCP test ($host:$port)...\n";
+flush();
+$sock = @fsockopen($host, $port, $errno, $errstr, 5);
+if ($sock) {
+    echo "TCP: OPEN\n";
+    fclose($sock);
 } else {
-    echo "DB: OK\n";
-    $r  = $db->query("SHOW TABLES");
-    echo "Tables: " . ($r ? $r->num_rows : 0) . "\n";
-    // Test includes.php chain
-    try {
-        require __DIR__ . '/config.php';
-        echo "config.php: OK\n";
-        echo "config DB_HOST: " . DB_HOST . "\n";
-        echo "config DB_NAME: " . DB_NAME . "\n";
-    } catch (Throwable $e) {
-        echo "config.php ERROR: " . $e->getMessage() . "\n";
-    }
+    echo "TCP: FAILED ($errno: $errstr)\n";
 }
+flush();
+
+// Test 2: mysqli with timeout
+if (extension_loaded('mysqli')) {
+    echo "\nMySQL connect (5s timeout)...\n";
+    flush();
+    $db = mysqli_init();
+    mysqli_options($db, MYSQLI_OPT_CONNECT_TIMEOUT, 5);
+    $ok = @mysqli_real_connect($db, $host, $user, $pass, $name, $port);
+    if ($ok) {
+        echo "MySQL: CONNECTED\n";
+        $r = mysqli_query($db, "SHOW TABLES");
+        echo "Tables: " . mysqli_num_rows($r) . "\n";
+    } else {
+        echo "MySQL ERROR: " . mysqli_connect_error() . " (code: " . mysqli_connect_errno() . ")\n";
+    }
+    flush();
+}
+
+// Test 3: Internal Railway hostname
+$int_host = 'mysql.railway.internal';
+if ($int_host !== $host) {
+    echo "\nTCP test (internal: $int_host:3306)...\n";
+    flush();
+    $sock2 = @fsockopen($int_host, 3306, $errno2, $errstr2, 5);
+    if ($sock2) {
+        echo "Internal TCP: OPEN\n";
+        fclose($sock2);
+    } else {
+        echo "Internal TCP: FAILED ($errno2: $errstr2)\n";
+    }
+    flush();
+}
+
+echo "\nDone.\n";
