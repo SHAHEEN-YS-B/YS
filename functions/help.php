@@ -5,69 +5,59 @@ function get_help_config(): array
     return [
         [
             'key' => 'sendto',
-            'name' => __("Send without quote to channel"),
+            'name' => __("إرسال بدون اقتباس إلى القناة"),
             'messages' => [
                 [
                     'type' => 'text',
                     'text' =>
-                        __("When a robot creates a message and sends it to you, if you forward it to your channel, the name of our robot will remain at the top of the post and will not have a good view, and if you forward it using unofficial telegram programs, the hyper link, attachment and inline buttons are gone. To solve this problem, you can use sending without quotes.") . "\n" .
-                        __("You can even create hyper text with any robot you like and use our robot to post it into your channel without quotes.") . "\n\n" .
-                        __("There are two ways to send without a quote:") . "\n" .
-                        "1- " . __("Send step by step") . "\n" .
-                        "2- " . __("Send with only one command") . "\n\n" .
-                        __("⚠️ Use /sendto_setting command to change the settings for this feature.") . "\n\n" .
-                        __("⚠️ Use /channels command to add channels to the list of predefined channels.") . "\n\n",
+                        __("عندما يُنشئ البوت رسالة ويرسلها إليك، وتقوم بإعادة توجيهها إلى قناتك، يبقى اسم البوت في أعلى المنشور. لحل هذه المشكلة يمكنك استخدام خاصية الإرسال بدون اقتباس.") . "\n\n" .
+                        __("هناك طريقتان للإرسال بدون اقتباس:") . "\n" .
+                        "1- " . __("الإرسال خطوة بخطوة") . "\n" .
+                        "2- " . __("الإرسال بأمر واحد فقط") . "\n\n" .
+                        __("⚠️ استخدم أمر /sendto_setting لتغيير إعدادات هذه الخاصية.") . "\n\n" .
+                        __("⚠️ استخدم أمر /channels لإضافة القنوات إلى القائمة المحددة مسبقاً."),
                 ],
                 [
                     'type' => 'text',
                     'text' =>
-                        "<b>" . __("Send step by step") . "</b>" . "\n\n" .
-                        __("For this purpose, send /sendto command alone and then proceed step by step according to the robot training."),
+                        "<b>" . __("الإرسال خطوة بخطوة") . "</b>" . "\n\n" .
+                        __("لهذا الغرض، أرسل أمر /sendto بمفرده ثم اتبع الخطوات وفق تعليمات البوت."),
                     'parse_mode' => 'html',
                 ],
                 [
                     'type' => 'text',
                     'text' =>
-                        "<b>" . __("Send with only one command") . "</b>" . "\n\n" .
-                        __("To do this, you must do the following:") . "\n\n" .
-                        sprintf(__("1️⃣ Make %s bot the desired channel admin."), '@' . BOT_USERNAME) . "\n\n" .
-                        __("⚠️ The second step is different for messages containing the inline button and other messages:") . "\n\n" .
-                        __("For messages containing a inline button:") . "\n" .
-                        __("2️⃣ Send this command to the following format for the robot:") . "\n" .
-                        "/sendto {channel id} {inline code}" . "\n\n" .
-                        __("❕For example:") . "\n" .
-                        "/sendto @FarsBots HGwBUUFsfq" . "\n" .
-                        "/sendto -1001031102294 HGwBUUFsfq" . "\n\n" .
-                        __("For other messages:") . "\n" .
-                        __("2️⃣ Reply this command in the following format to the post: (note that you must reply)") . "\n" .
-                        "/sendto {channel id}" . "\n\n" .
-                        __("❕For example:") . "\n" .
-                        "/sendto @FarsBots" . "\n" .
-                        "/sendto -1001031102294" . "\n\n",
+                        "<b>" . __("الإرسال بأمر واحد فقط") . "</b>" . "\n\n" .
+                        __("للقيام بذلك، اتبع الخطوات التالية:") . "\n\n" .
+                        sprintf(__("1️⃣ اجعل البوت %s مشرفاً في القناة المطلوبة."), '@' . BOT_USERNAME) . "\n\n" .
+                        __("للرسائل التي تحتوي على زر مضمن:") . "\n" .
+                        "/sendto {معرف القناة} {الكود}" . "\n\n" .
+                        __("للرسائل الأخرى:") . "\n" .
+                        "/sendto {معرف القناة}" . "\n\n",
                     'parse_mode' => 'html',
                 ],
                 [
                     'type' => 'animation',
-                    "animation" => MAIN_LINK . __("/img/sendto_inlinekey_help_en.mp4") . "?v1",
-                    "caption" => __("📍 Tutorial for sending messages without quotes containing a inline button to the channel with just one command"),
+                    "animation" => MAIN_LINK . "/img/sendto_inlinekey_help_fa.mp4?v1",
+                    "caption" => __("📍 شرح إرسال الرسائل بدون اقتباس تحتوي على زر مضمن إلى القناة"),
                 ],
                 [
                     'type' => 'animation',
-                    "animation" => MAIN_LINK . __("/img/sendto_other_help_en.mp4") . "?v1",
-                    "caption" => __("📍 Tutorial for send other messages to the channel without quoting with just one command"),
+                    "animation" => MAIN_LINK . "/img/sendto_other_help_fa.mp4?v1",
+                    "caption" => __("📍 شرح إرسال الرسائل الأخرى إلى القناة بدون اقتباس"),
                 ],
             ],
         ],
         [
             'key' => 'addadmin',
-            'name' => __("How to administer a robot in a channel"),
+            'name' => __("كيفية تعيين البوت مشرفاً في القناة"),
             'messages' => [
                 [
                     'type' => 'text',
                     'text' =>
-                        __("It's like adding your friend as admin.") . "\n" .
+                        __("الأمر مثل إضافة صديقك مشرفاً.") . "\n" .
                         sprintf(
-                            __("With the difference that when you want to admin your friend, when you type the first one or two letters of the ID or even their name, the search result will appear, but this is not the case with the robot and the robot must have a Latin ID (not a name). Type in <b>full</b> (I emphasize: complete and not just the first few letters) to appear in the search list of the add admin section, so in the search section of the add admin section type: %s"),
+                            __("الفرق أنه عند إضافة مشرف بشري تظهر نتائج البحث بمجرد كتابة أول حرف، لكن مع البوت يجب كتابة المعرف اللاتيني <b>كاملاً</b> حتى يظهر في قائمة البحث: %s"),
                             "<code>" . BOT_USERNAME . "</code>",
                         ),
                     'parse_mode' => 'html',
@@ -76,113 +66,111 @@ function get_help_config(): array
         ],
         [
             'key' => 'getid',
-            'name' => __("Get private channel ID"),
+            'name' => __("الحصول على معرف القناة الخاصة"),
             'messages' => [
                 [
                     'type' => 'text',
-                    'text' => __("If you want to post content on a private channel without a quote, since private channels do not have an ID, you must first extract the channel ID and then send without a quote.") . "\n\n" .
-                        __("You can use /getid command to extract the ID of private channels."),
+                    'text' => __("إذا أردت نشر محتوى في قناة خاصة بدون اقتباس، بما أن القنوات الخاصة لا تملك معرفاً، يجب استخراج معرف القناة أولاً.") . "\n\n" .
+                        __("يمكنك استخدام أمر /getid لاستخراج معرف القنوات الخاصة."),
                 ],
             ],
         ],
         [
             'key' => 'inlinekey',
-            'name' => __("inline buttons"),
+            'name' => __("الأزرار المضمنة"),
             'messages' => [
                 [
                     'type' => 'text',
                     'text' =>
-                        __("With this robot, you can add any type of inline button (link, counter, etc.) to any type of message (text, photo, video, voice, etc.) and edit them even after publishing.") . "\n\n" .
-                        __("You can use /inlinekey command to manage inline buttons.") . "\n\n" .
-                        __("You have two ways to make a inline button:") . "\n" .
-                        __("1 - Send /inlinekey first, then select Add.") . "\n" .
-                        __("2 - First send us the message you want to add to the inline button and then send /inlinekey command in reply.") . "\n\n" .
-                        __("After creating the message, you can view the statistics related to the message and also edit it. (By sending /inlinekey)"),
+                        __("مع هذا البوت يمكنك إضافة أي نوع من الأزرار المضمنة (رابط، عداد، إلخ) إلى أي نوع من الرسائل وتعديلها حتى بعد النشر.") . "\n\n" .
+                        __("استخدم أمر /inlinekey لإدارة الأزرار المضمنة.") . "\n\n" .
+                        __("لديك طريقتان لإنشاء زر مضمن:") . "\n" .
+                        __("1 - أرسل /inlinekey أولاً، ثم اختر إضافة.") . "\n" .
+                        __("2 - أرسل الرسالة أولاً ثم أرسل أمر /inlinekey رداً عليها."),
                 ],
             ],
         ],
         [
             'key' => 'inlinecode',
-            'name' => __("What is an inline code?"),
+            'name' => __("ما هو الكود المضمن؟"),
             'messages' => [
                 [
                     'type' => 'text',
                     'text' =>
-                        __("When you create a inline button, the robot sends you a 30-character English text that you need to use to use the message containing the glass button, view its statistics, edit it and delete it."),
+                        __("عند إنشاء زر مضمن، يرسل البوت لك نصاً من 30 حرفاً إنجليزياً تحتاجه لاستخدام الرسالة التي تحتوي على الزر المضمن أو عرض إحصائياتها أو تعديلها أو حذفها."),
                 ],
             ],
         ],
         [
             'key' => 'watermark',
-            'name' => __("Watermark"),
+            'name' => __("العلامة المائية"),
             'messages' => [
                 [
                     'type' => 'text',
                     'text' =>
-                        __("Use the @editgram_bot bot to watermark."),
+                        __("استخدم بوت @editgram_bot لإضافة العلامة المائية."),
                 ],
             ],
         ],
         [
             'key' => 'attach',
-            'name' => __("Attach file"),
+            'name' => __("إرفاق ملف"),
             'messages' => [
                 [
                     'type' => 'text',
                     'text' =>
-                        __("With this robot, you can attach any type of file (photo, video, voice, sticker, etc.) to your post.") . "\n" .
-                        __("The file you want will be displayed at the bottom of your text.") . "\n" .
-                        __("All you have to do is use /attach command."),
+                        __("مع هذا البوت يمكنك إرفاق أي نوع من الملفات (صورة، فيديو، صوت، ملصق، إلخ) بمنشورك.") . "\n" .
+                        __("سيظهر الملف أسفل نصك.") . "\n" .
+                        __("كل ما عليك هو استخدام أمر /attach."),
                 ],
             ],
         ],
         [
             'key' => 'hyper',
-            'name' => __("Create hyper"),
+            'name' => __("إنشاء رابط مخفي"),
             'messages' => [
                 [
                     'type' => 'text',
                     'text' =>
-                        __("With this bot you can create hyper messages in Markdown, MarkdownV2 and HTML formats.") . "\n" .
-                        __("You can also attach a file to your hyper message.") . "\n" .
-                        __("All you have to do is use /hyper command."),
+                        __("مع هذا البوت يمكنك إنشاء رسائل مرتبطة بصيغ Markdown وMarkdownV2 وHTML.") . "\n" .
+                        __("يمكنك أيضاً إرفاق ملف برسالتك المرتبطة.") . "\n" .
+                        __("كل ما عليك هو استخدام أمر /hyper."),
                 ],
             ],
         ],
         [
             'key' => 'formatting',
-            'name' => __("Text Formatting"),
+            'name' => __("تنسيق النص"),
             'messages' => [
                 [
                     'type' => 'text',
                     'text' =>
-                        __("Text Formatting Guide:") . "\n" .
-                        __("https://telegra.ph/chToolsBot-Guide-Text-Formatting-EN-09-10")
-                    ,
+                        __("دليل تنسيق النص:") . "\n" .
+                        __("https://telegra.ph/chToolsBot-Guide-Text-Formatting-EN-09-10"),
                     'disable_web_page_preview' => false,
                 ],
             ],
         ],
         [
             'key' => 'none',
-            'name' => __("Anonymous post"),
+            'name' => __("منشور مجهول الهوية"),
             'messages' => [
                 [
                     'type' => 'text',
                     'text' =>
-                        __("Sometimes you get a message from someone you want to share but you don't want that person's name to be at the top of your message.") . "\n" .
-                        __("For this purpose, when you send the word \"none\" in reply to the desired post, that post will be anonymous."),
+                        __("أحياناً تتلقى رسالة تريد مشاركتها لكن لا تريد ظهور اسم المرسل في أعلى منشورك.") . "\n" .
+                        __("لهذا الغرض، أرسل كلمة \"none\" رداً على المنشور المطلوب وسيصبح المنشور مجهول الهوية."),
                 ],
             ],
         ],
         [
             'key' => 'contact',
-            'name' => __("Contact us"),
+            'name' => __("تواصل معنا"),
             'messages' => [
                 [
                     'type' => 'text',
-                    'text' => __("To contact us, just send the command /contact and then send your suggestion, criticism or problem.") . "\n" .
-                        __("You can also attach a file to your message."),
+                    'text' => __("للتواصل معنا، أرسل أمر /contact ثم أرسل اقتراحك أو ملاحظتك أو مشكلتك.") . "\n" .
+                        __("يمكنك أيضاً إرفاق ملف برسالتك."),
                 ],
             ],
         ],
@@ -192,46 +180,30 @@ function get_help_config(): array
 function get_help_menu()
 {
     global $tg;
-    $keyboard = [
-        [
-            __("Send without quote to channel"),
-        ],
-        [
-            __("How to administer a robot in a channel"),
-        ],
-        [
-            __("Get private channel ID"),
-        ],
-        [
-            __("inline buttons"),
-            __("What is an inline code?"),
-        ],
-        [
-            __("Watermark"),
-        ],
-        [
-            __("Attach file"),
-        ],
-        [
-            __("Create hyper"),
-        ],
-        [
-            __("Text Formatting"),
-        ],
-        [
-            __("Anonymous post"),
-        ],
-        [
-            __("Contact us"),
-        ],
-        [
-            __("↩️ Cancel"),
-        ],
+
+    $help_config = get_help_config();
+    $keyboard = [];
+    $row = [];
+
+    foreach ($help_config as $item) {
+        $row[] = [
+            'text' => $item['name'],
+            'callback_data' => encode_callback_data(['action' => 'help', 'key' => $item['key']]),
+        ];
+        if (count($row) == 2) {
+            $keyboard[] = $row;
+            $row = [];
+        }
+    }
+    if (!empty($row)) {
+        $keyboard[] = $row;
+    }
+
+    $keyboard[] = [
+        ['text' => "⬅️ " . __("رجوع للقائمة"), 'callback_data' => 'menu_back'],
     ];
 
-    return $tg->replyKeyboardMarkup([
-        'keyboard' => apply_rtl_to_keyboard($keyboard),
-        'resize_keyboard' => true,
-        'one_time_keyboard' => true,
+    return $tg->inlineKeyboardMarkup([
+        'inline_keyboard' => $keyboard,
     ]);
 }

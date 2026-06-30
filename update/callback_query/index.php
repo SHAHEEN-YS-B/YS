@@ -16,7 +16,7 @@ $callback_data = decode_callback_data($callback_query['data']);
 if (!$callback_data) {
     $tg->answerCallbackQuery([
         "callback_query_id" => $callback_query['id'],
-        "text" => __("The request is invalid!"),
+        "text" => __("الطلب غير صالح!"),
     ], ['send_error' => false]);
 }
 
@@ -25,3 +25,5 @@ require realpath(__DIR__) . '/alert.php';
 require realpath(__DIR__) . '/set.php';
 require realpath(__DIR__) . '/inlinekey.php';
 require realpath(__DIR__) . '/channels/channels.php';
+require realpath(__DIR__) . '/help.php';
+require realpath(__DIR__) . '/contact.php';

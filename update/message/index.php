@@ -35,9 +35,6 @@ if ($message['chat']['type'] == 'private') {
 
     if (
         !empty($message['text']) && in_array($message['text'], [
-            __("🔘 Inline Buttons"), __("🔗 Hyper"), __("📎 Attach"),
-            __("📮 Send without Quotes"), __("🌐 اللغة"),
-            __("☎️ Contact Us"), __("❔ Help"), __("📂 Bot Source"),
             "↩️ Cancel", __("↩️ Cancel"),
         ])
     ) {
@@ -48,23 +45,7 @@ if ($message['chat']['type'] == 'private') {
 
         empty_com($tg->update_from);
 
-        if ($message['text'] == __("🔘 Inline Buttons")) {
-            $message['text'] = '/inlinekey';
-        } elseif ($message['text'] == __("🔗 Hyper")) {
-            $message['text'] = '/hyper';
-        } elseif ($message['text'] == __("📎 Attach")) {
-            $message['text'] = '/attach';
-        } elseif ($message['text'] == __("📮 Send without Quotes")) {
-            $message['text'] = '/sendto';
-        } elseif ($message['text'] == __("🌐 اللغة")) {
-            $message['text'] = '/language';
-        } elseif ($message['text'] == __("☎️ Contact Us")) {
-            $message['text'] = '/contact';
-        } elseif ($message['text'] == __("❔ Help")) {
-            $message['text'] = '/help';
-        } elseif ($message['text'] == __("📂 Bot Source")) {
-            $message['text'] = '/source';
-        } elseif ($message['text'] == "↩️ Cancel" || $message['text'] == __("↩️ Cancel")) {
+        if ($message['text'] == "↩️ Cancel" || $message['text'] == __("↩️ Cancel")) {
             $message['text'] = '/cancel';
         }
     }

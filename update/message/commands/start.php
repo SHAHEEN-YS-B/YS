@@ -70,18 +70,8 @@ $user_settings = $db->rawQueryOne($q, [
 ]);
 
 if (empty($user_settings)) {
-    $language_code = DEFAULT_LANGUAGE;
-
-    if (!empty($message['from']['language_code'])) {
-        $lang_prefix = strtolower(substr($message['from']['language_code'], 0, 2));
-        if ($lang_prefix === 'fa') {
-            $language_code = 'fa_IR';
-        } elseif ($lang_prefix === 'en') {
-            $language_code = 'en_US';
-        } elseif ($lang_prefix === 'ar') {
-            $language_code = 'ar_AR';
-        }
-    }
+    // اللغة العربية هي اللغة الوحيدة المتاحة
+    $language_code = 'ar_AR';
 
     $tmp = $db->insert('settings', [
         'user_id' => $tg->update_from,

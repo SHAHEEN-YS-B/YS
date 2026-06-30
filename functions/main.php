@@ -1,7 +1,5 @@
 <?php
 
-use Morilog\Jalali\CalendarUtils;
-
 function get_db(): MysqliDb
 {
     return new MysqliDb([
@@ -57,16 +55,9 @@ function current_language($language_code = null)
 
 function apply_rtl_to_keyboard($keyboard)
 {
-    $rtl = false;
-
-    if (current_language() == 'fa_IR' || current_language() == 'ar_AR') {
-        $rtl = true;
-    }
-
-    if ($rtl) {
-        foreach ($keyboard as $key => $val) {
-            $keyboard[$key] = array_reverse($val);
-        }
+    // العربية دائمًا RTL
+    foreach ($keyboard as $key => $val) {
+        $keyboard[$key] = array_reverse($val);
     }
 
     return $keyboard;
@@ -359,20 +350,19 @@ function mainMenu()
 
     $keyboard = [
         [
-            ['text' => __("🔘 Inline Buttons"), 'callback_data' => 'menu_inlinekey'],
-            ['text' => __("🔗 Hyper"), 'callback_data' => 'menu_hyper'],
-            ['text' => __("📎 Attach"), 'callback_data' => 'menu_attach'],
+            ['text' => __("🔘 أزرار مضمنة"), 'callback_data' => 'menu_inlinekey'],
+            ['text' => __("🔗 رابط مخفي"), 'callback_data' => 'menu_hyper'],
+            ['text' => __("📎 إرفاق"), 'callback_data' => 'menu_attach'],
         ],
         [
-            ['text' => __("📮 Send without Quotes"), 'callback_data' => 'menu_sendto'],
-            ['text' => __("🌐 اللغة"), 'callback_data' => 'menu_language'],
+            ['text' => __("📮 إرسال بدون اقتباس"), 'callback_data' => 'menu_sendto'],
+            ['text' => __("☎️ تواصل معنا"), 'callback_data' => 'menu_contact'],
         ],
         [
-            ['text' => __("☎️ Contact Us"), 'callback_data' => 'menu_contact'],
-            ['text' => __("❔ Help"), 'callback_data' => 'menu_help'],
+            ['text' => __("❔ مساعدة"), 'callback_data' => 'menu_help'],
+            ['text' => __("📂 مصدر البوت"), 'callback_data' => 'menu_source'],
         ],
         [
-            ['text' => __("📂 Bot Source"), 'callback_data' => 'menu_source'],
             ['text' => "⚙️ قناة الدعم", 'url' => SUPPORT_CHANNEL_URL],
         ],
     ];
@@ -452,75 +442,26 @@ function convert_time_to_text($time): string
 
     if (abs($tmp) < 60) {
         $text .= abs($tmp) . " " . __("seconds") . " ";
-        if ($tmp < 0) {
-            $text .= __("ago");
-        } else {
-            $text .= __("later");
-        }
-
-        if (current_language() == 'fa_IR') {
-            $text .= " (" . CalendarUtils::strftime('l H:i', $time) . ")";
-        } else {
-            $text .= " (" . date('l H:i', $time) . ")";
-        }
+        $text .= ($tmp < 0) ? __("ago") : __("later");
+        $text .= " (" . date('l H:i', $time) . ")";
     } elseif (abs($tmp) < 60 * 60) {
         $text .= (int)(abs($tmp) / 60) . " " . __("minutes") . " ";
-        if ($tmp < 0) {
-            $text .= __("ago");
-        } else {
-            $text .= __("later");
-        }
-
-        if (current_language() == 'fa_IR') {
-            $text .= " (" . CalendarUtils::strftime('l H:i', $time) . ")";
-        } else {
-            $text .= " (" . date('l H:i', $time) . ")";
-        }
+        $text .= ($tmp < 0) ? __("ago") : __("later");
+        $text .= " (" . date('l H:i', $time) . ")";
     } elseif (abs($tmp) < 60 * 60 * 24) {
         $text .= (int)(abs($tmp) / (60 * 60)) . " " . __("hours") . " ";
-        if ($tmp < 0) {
-            $text .= __("ago");
-        } else {
-            $text .= __("later");
-        }
-
-        if (current_language() == 'fa_IR') {
-            $text .= " (" . CalendarUtils::strftime('l H:i', $time) . ")";
-        } else {
-            $text .= " (" . date('l H:i', $time) . ")";
-        }
+        $text .= ($tmp < 0) ? __("ago") : __("later");
+        $text .= " (" . date('l H:i', $time) . ")";
     } elseif (abs($tmp) < 60 * 60 * 24 * 30) {
         $text .= (int)(abs($tmp) / (60 * 60 * 24)) . " " . __("days") . " ";
-        if ($tmp < 0) {
-            $text .= __("ago");
-        } else {
-            $text .= __("later");
-        }
-
-        if (current_language() == 'fa_IR') {
-            $text .= " (" . CalendarUtils::strftime('j F Y ساعت H:i', $time) . ")";
-        } else {
-            $text .= " (" . date('j F y \a\t H:i', $time) . ")";
-        }
+        $text .= ($tmp < 0) ? __("ago") : __("later");
+        $text .= " (" . date('j F y \a\t H:i', $time) . ")";
     } elseif (abs($tmp) < 60 * 60 * 24 * 365) {
         $text .= (int)(abs($tmp) / (60 * 60 * 24 * 30)) . " " . __("months") . " ";
-        if ($tmp < 0) {
-            $text .= __("ago");
-        } else {
-            $text .= __("later");
-        }
-
-        if (current_language() == 'fa_IR') {
-            $text .= " (" . CalendarUtils::strftime('j F Y ساعت H:i', $time) . ")";
-        } else {
-            $text .= " (" . date('j F y \a\t H:i', $time) . ")";
-        }
+        $text .= ($tmp < 0) ? __("ago") : __("later");
+        $text .= " (" . date('j F y \a\t H:i', $time) . ")";
     } else {
-        if (current_language() == 'fa_IR') {
-            $text .= CalendarUtils::strftime('l j F Y ساعت H:i', $time);
-        } else {
-            $text .= date('l, F j, Y \a\t H:i', $time);
-        }
+        $text .= date('l, j F Y \a\t H:i', $time);
     }
     return $text;
 }

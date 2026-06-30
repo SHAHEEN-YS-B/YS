@@ -53,7 +53,7 @@ define('SPONSOR_CHANNEL_ENABLE', false);
 define('SPONSOR_CHANNELS',       []);
 
 // ---------------------------------------------------------------------------
-// Languages — Arabic default
+// Languages — Arabic only
 // ---------------------------------------------------------------------------
 define('DEFAULT_LANGUAGE', 'ar_AR');
 define('LANGUAGES', [
@@ -62,25 +62,13 @@ define('LANGUAGES', [
         'name'     => "🇸🇦 العربية",
         'timezone' => 'Asia/Riyadh',
     ],
-    'en_US' => [
-        'code'     => 'en_US',
-        'name'     => "🇬🇧 English",
-        'timezone' => 'UTC',
-    ],
-    'fa_IR' => [
-        'code'     => 'fa_IR',
-        'name'     => "🇮🇷 فارسی",
-        'timezone' => 'Asia/Tehran',
-    ],
 ]);
 
 // ---------------------------------------------------------------------------
-// Welcome banner per language
+// Welcome banner
 // ---------------------------------------------------------------------------
 define('BANNER_LINK', [
     'ar_AR' => 'https://i.postimg.cc/Mp6J1k1Q/Picsart-26-06-29-10-52-12-611-ezgif-com-video-to-gif-converter.gif',
-    'en_US' => MAIN_LINK . '/img/banner-en.jpg',
-    'fa_IR' => MAIN_LINK . '/img/banner-fa.jpg',
 ]);
 
 // ---------------------------------------------------------------------------
